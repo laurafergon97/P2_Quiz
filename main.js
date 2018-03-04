@@ -1,6 +1,3 @@
-
-
-
 const readline = require('readline');
 
 
@@ -107,10 +104,4 @@ rl.on('line', (line) => {
     log("Adiós");
 process.exit(0);
 });
-
-/**
- * Muestra la ayuda
- */
-
-
 

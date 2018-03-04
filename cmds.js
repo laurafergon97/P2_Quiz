@@ -1,5 +1,3 @@
-
-
 const {log, biglog, errorlog, colorize}= require("./out");
 
 const model = require('./model');
@@ -179,3 +177,4 @@ var adecuaText = function(texto){
     textoFinal=respuesta[0].toLowerCase().trim();
     return textoFinal;
 }
+

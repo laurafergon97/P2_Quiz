@@ -1,3 +1,5 @@
+
+
 const {log, biglog, errorlog, colorize}= require("./out");
 
 const model = require('./model');
@@ -108,7 +110,9 @@ exports.playCmd = rl => {
                     log(`CORRECTO - Lleva ${colorize(score, 'black')} aciertos`);
                     playOne();
                 }else{
-                    log('INCORRECTO.');
+                    log("INCORRECTO.")
+                    log(`Fin del juego. Aciertos: ${score}`);
+                    biglog(score,'magenta');
                     rl.prompt();
                 }
                 
@@ -177,4 +181,3 @@ var adecuaText = function(texto){
     textoFinal=respuesta[0].toLowerCase().trim();
     return textoFinal;
 }
-

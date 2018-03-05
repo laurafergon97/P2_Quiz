@@ -1,5 +1,3 @@
-
-
 const {log, biglog, errorlog, colorize}= require("./out");
 
 const model = require('./model');
@@ -61,9 +59,9 @@ exports.testCmd = (rl, id) => {
             const quiz = model.getByIndex(id);
             rl.question(colorize(quiz.question + '? ','red'), answer =>{
                 // Invocamos a un metodo escrito por nosotras para no discriminar mayusculas ni minusculas ni espacios
-                let answer1 = adecuaText(answer);
-                let resp_quizz1 = adecuaText(quiz.answer);
-                if(answer1 === resp_quizz1){
+                answer = adecuaText(answer);
+                resp_quizz = adecuaText(quiz.answer);
+                if(answer === resp_quizz){
                     log('Su respuesta es correcta.');
                     biglog('Correcta','green');
                 }else{
@@ -103,11 +101,9 @@ exports.playCmd = rl => {
             toBeResolved.splice(id,1);
             rl.question(colorize(quiz.question + '? ','red'), answer =>{
                 // Invocamos a un metodo escrito por nosotras para no discriminar mayusculas ni minusculas ni espacios
-                let answer1 = adecuaText(answer);
-                let resp_quizz1 = adecuaText(quiz.answer);
-                //log(answer1);
-                //log(resp_quizz1);
-                if(answer1 === resp_quizz1){
+                answer = adecuaText(answer);
+                resp_quizz = adecuaText(quiz.answer);
+                if(answer === resp_quizz){
                     score++;
                     log(`CORRECTO - Lleva ${colorize(score, 'black')} aciertos`);
                     playOne();
@@ -171,19 +167,15 @@ exports.creditsCmd = rl => {
     log('Paula García Fernández','green');
     log('Laura Fernández González','green');
     rl.prompt();
-};	
+};
 
 exports.quitCmd =rl => {
      rl.close();
      rl.prompt();
 };
 
-adecuaText = function(texto){
+var adecuaText = function(texto){
     let respuesta = texto.split("");
-    let textoFinal = [];
-    for(j = 0; j<texto.length; j++){
-    	textoFinal[j]=respuesta[j].toLowerCase().trim();
-    }
-    
+    textoFinal=respuesta[0].toLowerCase().trim();
     return textoFinal;
 }
